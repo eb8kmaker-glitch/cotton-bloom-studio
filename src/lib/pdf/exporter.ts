@@ -23,7 +23,7 @@ export async function exportPatternPdf(
   const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' })
 
   const { grid, dmcMap, width, height } = pattern
-  const uniqueIndices = [...new Set(grid.flat())]
+  const uniqueIndices = Array.from(new Set(grid.flat()))
 
   // ── Cover page: thread list ────────────────────────────────────────────────
   doc.setFont('helvetica', 'bold')

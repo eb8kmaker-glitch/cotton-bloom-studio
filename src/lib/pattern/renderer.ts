@@ -28,7 +28,7 @@ export function renderPattern(
   ctx.clearRect(0, 0, canvas.width, canvas.height)
 
   // Unique cluster indices for symbol assignment
-  const uniqueIndices = [...new Set(grid.flat())]
+  const uniqueIndices = Array.from(new Set(grid.flat()))
 
   // Draw cells
   for (let y = 0; y < height; y++) {

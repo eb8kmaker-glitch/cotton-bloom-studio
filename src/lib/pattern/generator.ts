@@ -158,7 +158,7 @@ export async function generatePattern(
 
   const usedIds = new Set<string>()
   const dmcMap: DmcColor[] = centers.map(center => {
-    let dmc = findClosestDmc(center, [...usedIds])
+    let dmc = findClosestDmc(center, Array.from(usedIds))
     if (!dmc) dmc = findClosestDmc(center, [])
     usedIds.add(dmc.id)
     return dmc
