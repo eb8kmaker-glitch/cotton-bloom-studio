@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://cotton-bloom-studio.vercel.app'
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://stitchpatternmaker.vercel.app'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

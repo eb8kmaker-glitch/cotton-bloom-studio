@@ -168,5 +168,5 @@ export async function exportPatternPdf(
     }
   }
 
-  doc.save(`cotton-bloom-pattern-${width}x${height}.pdf`)
+  doc.save(`stitchpatternmaker-${width}x${height}.pdf`)
 }

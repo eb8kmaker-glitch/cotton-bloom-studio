@@ -69,8 +69,8 @@ const jsonLd = {
     {
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: '홈', item: 'https://cotton-bloom-studio.vercel.app' },
-        { '@type': 'ListItem', position: 2, name: '가이드', item: 'https://cotton-bloom-studio.vercel.app/guide' },
+        { '@type': 'ListItem', position: 1, name: '홈', item: 'https://stitchpatternmaker.vercel.app' },
+        { '@type': 'ListItem', position: 2, name: '가이드', item: 'https://stitchpatternmaker.vercel.app/guide' },
       ],
     },
   ],
