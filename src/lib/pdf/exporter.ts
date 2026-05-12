@@ -8,7 +8,7 @@ import type { PatternResult, ThreadUsage } from '@/types'
 export async function exportPatternPdf(
   pattern: PatternResult,
   threads: ThreadUsage[],
-  title = 'Cotton & Bloom — 십자수 도안',
+  title = 'Stitch Pattern Maker — 십자수 도안',
 ): Promise<void> {
   const { jsPDF }  = await import('jspdf')
   const autoTable  = (await import('jspdf-autotable')).default

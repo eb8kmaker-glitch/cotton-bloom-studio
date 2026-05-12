@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Navbar from '@/components/layout/Navbar'
 
 export const metadata: Metadata = {
-  title: '십자수 완전 입문 가이드 — 초보자를 위한 시작부터 완성까지 | Cotton & Bloom Studio',
+  title: '십자수 완전 입문 가이드 — 초보자를 위한 시작부터 완성까지 | Stitch Pattern Maker',
   description:
     '십자수를 처음 시작하는 분들을 위한 완전 가이드. 준비물, DMC 실 번호 체계, 도안 읽는 방법, 색상 수 선택, 실 보관법, PDF 인쇄 팁까지 — 실제 작업에 바로 쓸 수 있는 정보만 모았습니다.',
   keywords: [
@@ -11,9 +11,12 @@ export const metadata: Metadata = {
     '자수 도안', '십자수 초보', '십자수 바늘', '에이다', '십자수 원단',
   ],
   openGraph: {
-    title: '십자수 완전 입문 가이드 | Cotton & Bloom Studio',
+    title: '십자수 완전 입문 가이드 | Stitch Pattern Maker',
     description: '준비물부터 PDF 도안 인쇄까지 — 십자수 초보자를 위한 완전 실전 가이드',
     type: 'article',
+  },
+  alternates: {
+    canonical: 'https://stitchpatternmaker.app/guide',
   },
 }
 
@@ -32,10 +35,10 @@ const faqItems = [
   },
   {
     q: '십자수 초보자가 첫 작품으로 적합한 도안 크기는?',
-    a: '30×30칸 이하, 색상 수 5가지 이하의 도안을 권장합니다. 작고 단순한 작품을 먼저 완성해 성취감을 느끼는 것이 중요합니다. Cotton & Bloom Studio에서 도안 생성 시 크기와 색상 수를 조정할 수 있습니다.',
+    a: '30×30칸 이하, 색상 수 5가지 이하의 도안을 권장합니다. 작고 단순한 작품을 먼저 완성해 성취감을 느끼는 것이 중요합니다. Stitch Pattern Maker에서 도안 생성 시 크기와 색상 수를 조정할 수 있습니다.',
   },
   {
-    q: 'Cotton & Bloom Studio에서 만든 도안은 어떻게 사용하나요?',
+    q: 'Stitch Pattern Maker에서 만든 도안은 어떻게 사용하나요?',
     a: '생성된 도안을 PDF로 저장한 뒤 A4 용지에 100% 비율로 인쇄하세요. 도안에는 DMC 실 번호 목록, 색상 기호, 격자가 포함되어 있어 바로 작업에 활용할 수 있습니다.',
   },
   {
@@ -52,8 +55,8 @@ const jsonLd = {
       headline: '십자수 완전 입문 가이드',
       description:
         '십자수를 처음 시작하는 분들을 위한 완전 가이드. 준비물부터 PDF 도안 인쇄 팁까지.',
-      author: { '@type': 'Organization', name: 'Cotton & Bloom Studio' },
-      publisher: { '@type': 'Organization', name: 'Cotton & Bloom Studio' },
+      author: { '@type': 'Organization', name: 'Stitch Pattern Maker' },
+      publisher: { '@type': 'Organization', name: 'Stitch Pattern Maker' },
       datePublished: '2024-01-01',
       dateModified: '2025-05-01',
       inLanguage: 'ko',
@@ -164,7 +167,7 @@ export default function GuidePage() {
               <p>
                 최근에는 사진을 십자수 도안으로 변환하는 디지털 도구가 등장하면서,
                 가족 사진·반려동물·풍경 등 개인적인 소재를 담은 나만의 도안을 만들 수 있게 되었습니다.
-                Cotton &amp; Bloom Studio가 바로 그 역할을 합니다.
+                Stitch Pattern Maker가 바로 그 역할을 합니다.
               </p>
             </div>
           </section>
@@ -309,7 +312,7 @@ export default function GuidePage() {
                 ))}
               </div>
               <p className="mt-5">
-                Cotton &amp; Bloom Studio에서는 도안 생성 시 색상 수를 5~60색 사이로 자유롭게 조절할 수 있습니다.
+                Stitch Pattern Maker에서는 도안 생성 시 색상 수를 5~60색 사이로 자유롭게 조절할 수 있습니다.
                 처음에는 10~20색으로 시작하고, 익숙해지면 색상 수를 늘려 사진과 가까운 도안을 만들어보세요.
               </p>
             </div>
@@ -461,7 +464,7 @@ export default function GuidePage() {
             </h2>
             <div className="prose-content">
               <p>
-                Cotton &amp; Bloom Studio에서 생성한 도안은 PDF로 저장됩니다.
+                Stitch Pattern Maker에서 생성한 도안은 PDF로 저장됩니다.
                 올바른 설정으로 인쇄해야 격자 크기가 정확히 맞아 작업이 수월해집니다.
               </p>
               <ul className="mt-4 space-y-3 text-[14px] text-warm-500 font-light leading-relaxed">
@@ -548,7 +551,7 @@ export default function GuidePage() {
 
       <footer className="border-t border-linen-300/20 py-8 text-center">
         <p className="text-[11px] text-warm-400 font-light">
-          © 2025 Cotton &amp; Bloom Studio —{' '}
+          © 2025 Stitch Pattern Maker —{' '}
           <Link href="/dmc-colors" className="hover:text-warm-600 transition-colors">DMC 색상표</Link>
           {' · '}
           <Link href="/guide" className="hover:text-warm-600 transition-colors">가이드</Link>

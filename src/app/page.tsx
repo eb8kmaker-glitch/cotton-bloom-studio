@@ -54,7 +54,7 @@ export default function HomePage() {
           <div className="flex flex-col justify-center py-14 pr-12 border-r border-linen-300/20">
             <div className="flex items-center gap-2.5 mb-5">
               <span className="text-[10px] uppercase tracking-[0.18em] text-sage-400 font-light">
-                Handmade Pattern Studio
+                Photo to Cross Stitch Pattern Generator
               </span>
               <div className="h-px w-12 bg-sage-400/50" />
             </div>

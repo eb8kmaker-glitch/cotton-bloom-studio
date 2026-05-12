@@ -8,10 +8,10 @@ export default function Navbar() {
       <div className="flex flex-col gap-0.5">
         <div className="flex items-center gap-2 font-cormorant text-xl tracking-wider text-warm-600">
           <span className="w-1.5 h-1.5 rounded-full bg-sage-400 flex-shrink-0" />
-          Cotton &amp; Bloom Studio
+          Stitch Pattern Maker
         </div>
         <p className="text-[9px] uppercase tracking-[0.14em] text-warm-400 font-light font-noto">
-          Cross Stitch Pattern Maker
+          Cross Stitch Pattern Generator
         </p>
       </div>
 

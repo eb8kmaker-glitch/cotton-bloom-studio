@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://stitchpatternmaker.vercel.app'
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://stitchpatternmaker.app'
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -9,5 +9,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
     },
     sitemap: `${BASE_URL}/sitemap.xml`,
+    host: BASE_URL,
   }
 }
