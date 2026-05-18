@@ -37,6 +37,8 @@ export function usePatternGenerator() {
           settings.colorCount,
           settings.sepLevel,
           settings.qualityMode,
+          settings.aspectMode,
+          settings.ditheringMode,
           (pct, label, sub = '') => {
             setState(s => ({ ...s, progress: pct, label, sub }))
           },

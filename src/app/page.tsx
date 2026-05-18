@@ -12,12 +12,14 @@ import { usePatternGenerator } from '@/hooks/usePatternGenerator'
 import type { PatternSettings } from '@/types'
 
 const DEFAULT_SETTINGS: PatternSettings = {
-  width:       100,
-  height:      100,
-  colorCount:  40,
-  sepLevel:    'medium',
-  mode:        'color',
-  qualityMode: 'smooth',
+  width:         100,
+  height:        100,
+  colorCount:    40,
+  sepLevel:      'medium',
+  mode:          'color',
+  qualityMode:   'balanced',
+  aspectMode:    'fit',
+  ditheringMode: 'floyd',
 }
 
 export default function HomePage() {

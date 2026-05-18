@@ -24,15 +24,24 @@ export type SepLevel = 'off' | 'weak' | 'medium' | 'strong'
 
 export type DisplayMode = 'color' | 'symbol' | 'mixed'
 
-export type QualityMode = 'sharp' | 'smooth' | 'vibrant'
+/** Fast = flat color / Balanced = dithering supported / HQ = sharpen + cleanup */
+export type QualityMode = 'fast' | 'balanced' | 'hq'
+
+/** How the source image is mapped into the pattern grid */
+export type AspectMode = 'fit' | 'crop' | 'stretch'
+
+/** Dithering algorithm applied during quantization */
+export type DitheringMode = 'none' | 'floyd' | 'atkinson' | 'ordered'
 
 export interface PatternSettings {
-  width:       number
-  height:      number
-  colorCount:  number
-  sepLevel:    SepLevel
-  mode:        DisplayMode
-  qualityMode: QualityMode
+  width:         number
+  height:        number
+  colorCount:    number
+  sepLevel:      SepLevel
+  mode:          DisplayMode
+  qualityMode:   QualityMode
+  aspectMode:    AspectMode
+  ditheringMode: DitheringMode
 }
 
 // ── Thread usage ─────────────────────────────────────────────────────────────

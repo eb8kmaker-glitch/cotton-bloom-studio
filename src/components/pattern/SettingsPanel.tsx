@@ -1,13 +1,17 @@
 'use client'
 
-import type { PatternSettings, SepLevel, DisplayMode, SizePrefixPreset, QualityMode } from '@/types'
+import { useState } from 'react'
+import type {
+  PatternSettings, SepLevel, DisplayMode, SizePrefixPreset,
+  QualityMode, AspectMode, DitheringMode,
+} from '@/types'
 
 interface SettingsPanelProps {
-  settings:    PatternSettings
-  onChange:    (s: PatternSettings) => void
-  onGenerate:  () => void
+  settings:     PatternSettings
+  onChange:     (s: PatternSettings) => void
+  onGenerate:   () => void
   isGenerating: boolean
-  hasImage:    boolean
+  hasImage:     boolean
 }
 
 const PRESETS: { label: string; value: SizePrefixPreset; w: number; h: number }[] = [
@@ -26,9 +30,22 @@ const COLOR_COUNTS = [
 ]
 
 const QUALITY_MODES: { label: string; value: QualityMode; hint: string }[] = [
-  { label: 'Sharp',   value: 'sharp',   hint: '플랫 컬러 — 선명한 경계선' },
-  { label: 'Smooth',  value: 'smooth',  hint: '디더링 — 부드러운 그라데이션' },
-  { label: 'Vibrant', value: 'vibrant', hint: '채도 강화 — 풍부하고 선명한 색감' },
+  { label: 'Fast',     value: 'fast',     hint: '빠른 생성 — 플랫 컬러' },
+  { label: 'Balanced', value: 'balanced', hint: '균형 — 디더링 지원' },
+  { label: 'HQ',       value: 'hq',       hint: '최고 품질 — 샤픈 + Confetti 정리' },
+]
+
+const ASPECT_MODES: { label: string; value: AspectMode; hint: string }[] = [
+  { label: 'Fit',     value: 'fit',     hint: '원본 비율 유지 + 여백 채움' },
+  { label: 'Crop',    value: 'crop',    hint: '중앙 기준 크롭 — 여백 없음' },
+  { label: 'Stretch', value: 'stretch', hint: '격자에 맞게 늘림' },
+]
+
+const DITHERING_MODES: { label: string; value: DitheringMode; hint: string }[] = [
+  { label: 'None',     value: 'none',     hint: '플랫 컬러 — 선명한 경계' },
+  { label: 'Floyd',    value: 'floyd',    hint: 'Floyd–Steinberg 디더링' },
+  { label: 'Atkinson', value: 'atkinson', hint: 'Atkinson — 부드러운 디더링' },
+  { label: 'Ordered',  value: 'ordered',  hint: 'Bayer 4×4 매트릭스 패턴' },
 ]
 
 const SEP_LEVELS: { label: string; value: SepLevel; hint: string }[] = [
@@ -98,6 +115,32 @@ export default function SettingsPanel({
         )}
       </Section>
 
+      {/* Aspect mode */}
+      <Section label="비율 모드">
+        <p className="text-[10px] text-warm-400 font-light leading-relaxed mb-2.5">
+          원본 이미지를 격자에<br />매핑하는 방식을 선택합니다
+        </p>
+        <div className="flex gap-1 mb-2">
+          {ASPECT_MODES.map(a => (
+            <button
+              key={a.value}
+              onClick={() => onChange({ ...settings, aspectMode: a.value })}
+              className={`flex-1 py-1.5 text-[10px] rounded-chip border cursor-pointer
+                         transition-all duration-150 font-noto tracking-wide
+                         ${settings.aspectMode === a.value
+                           ? 'bg-warm-600 text-linen-50 border-warm-600'
+                           : 'bg-linen-50/60 text-warm-400 border-linen-300/35 hover:bg-linen-100/70'
+                         }`}
+            >
+              {a.label}
+            </button>
+          ))}
+        </div>
+        <p className="text-[10px] text-sage-400 font-light">
+          {ASPECT_MODES.find(a => a.value === settings.aspectMode)?.hint}
+        </p>
+      </Section>
+
       {/* Colors */}
       <Section label="색상 설정">
         <div className="mb-2">
@@ -122,7 +165,7 @@ export default function SettingsPanel({
       {/* Quality mode */}
       <Section label="렌더링 품질">
         <p className="text-[10px] text-warm-400 font-light leading-relaxed mb-2.5">
-          색감 표현 방식과<br />디더링 알고리즘을 선택합니다
+          전처리 강도와 리샘플링<br />방식을 선택합니다
         </p>
         <div className="flex gap-1 mb-2">
           {QUALITY_MODES.map(q => (
@@ -142,6 +185,32 @@ export default function SettingsPanel({
         </div>
         <p className="text-[10px] text-sage-400 font-light">
           {QUALITY_MODES.find(q => q.value === settings.qualityMode)?.hint}
+        </p>
+      </Section>
+
+      {/* Dithering mode */}
+      <Section label="디더링">
+        <p className="text-[10px] text-warm-400 font-light leading-relaxed mb-2.5">
+          색상 양자화 시 적용할<br />디더링 알고리즘을 선택합니다
+        </p>
+        <div className="flex gap-1 mb-2">
+          {DITHERING_MODES.map(d => (
+            <button
+              key={d.value}
+              onClick={() => onChange({ ...settings, ditheringMode: d.value })}
+              className={`flex-1 py-1.5 text-[10px] rounded-chip border cursor-pointer
+                         transition-all duration-150 font-noto tracking-wide
+                         ${settings.ditheringMode === d.value
+                           ? 'bg-warm-600 text-linen-50 border-warm-600'
+                           : 'bg-linen-50/60 text-warm-400 border-linen-300/35 hover:bg-linen-100/70'
+                         }`}
+            >
+              {d.label}
+            </button>
+          ))}
+        </div>
+        <p className="text-[10px] text-sage-400 font-light">
+          {DITHERING_MODES.find(d => d.value === settings.ditheringMode)?.hint}
         </p>
       </Section>
 
@@ -293,6 +362,3 @@ function SpinIcon() {
     </svg>
   )
 }
-
-// useState import
-import { useState } from 'react'
